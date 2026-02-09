@@ -1,3 +1,5 @@
+use std::io;
+
 const X: u32 = 5;
 
 fn shadowing() {
@@ -12,27 +14,18 @@ fn main() {
     println!("Hello, world! {}", X);
     println!("{}", name);
 
-    // let y = x + 23;
-    // X = 23;
     name = "Jane";
     println!("{}", name);
     println!(" ------ {}", X);
 
-    // shadowing();
     let name = String::from("martin");
-    // user_name(name);
-    // user_name("Chris".to_string());
-    // user_name("Emma".to_string());
-
-    // sub(20, 10);
-
-    // user("Mark", 23, "mark@gmail.co".to_string(), true);
-
-    // conditionals();
 
     school_conditionals();
     loops();
     while_loop();
+
+    // 🔽 CLI Calculator
+    calculator_cli();
 }
 
 fn user_name(name: String) {
@@ -41,22 +34,23 @@ fn user_name(name: String) {
 
 fn add(a: u32, b: u32) -> u32 {
     let sum = a + b;
-
     println!("The sum of {a} and {b} is {sum}");
-    return sum;
+    sum
 }
 
 fn sub(a: u32, b: u32) -> u32 {
     let sum = a - b;
     add(a, b);
-
     println!("The sum of {a} and {b} is {sum}");
-    return sum;
+    sum
 }
 
 fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
-    println!("My user name is {}, \n age is {}, \n email is {}, \n is_active is {}", name, age, email, is_active);
-    return name.to_string();
+    println!(
+        "My user name is {}, \n age is {}, \n email is {}, \n is_active is {}",
+        name, age, email, is_active
+    );
+    name.to_string()
 }
 
 fn conditionals() {
@@ -72,7 +66,6 @@ fn conditionals() {
 }
 
 fn school_conditionals() {
-
     let time: u32 = 19;
 
     if time < 8 {
@@ -88,7 +81,7 @@ fn school_conditionals() {
     } else if time == 15 {
         println!("It's Closing time!")
     } else {
-        println!("You can do what ever you want after closing!")
+        println!("You can do whatever you want after closing!")
     }
 }
 
@@ -114,4 +107,45 @@ fn while_loop() {
         println!("The count is {}", count);
         count -= 1;
     }
+}
+
+fn calculator_cli() {
+    let mut input = String::new();
+
+    println!("\n--- CLI Calculator ---");
+
+    println!("Enter first number:");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let num1: f64 = input.trim().parse().expect("Invalid number");
+
+    input.clear();
+
+    println!("Enter operator (+, -, *, /):");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let operator = input.trim().to_string();
+
+    input.clear();
+
+    println!("Enter second number:");
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    let num2: f64 = input.trim().parse().expect("Invalid number");
+
+    let result = match operator.as_str() {
+        "+" => num1 + num2,
+        "-" => num1 - num2,
+        "*" => num1 * num2,
+        "/" => {
+            if num2 == 0.0 {
+                println!("Error: Division by zero is not allowed");
+                return;
+            }
+            num1 / num2
+        }
+        _ => {
+            println!("Invalid operator");
+            return;
+        }
+    };
+
+    println!("Result: {}", result);
 }
