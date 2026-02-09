@@ -9,14 +9,14 @@ fn shadowing() {
 
 fn main() {
     let mut name = "John";
-    println!("Hello, world! {}", X);
-    println!("{}", name);
+    // println!("Hello, world! {}", X);
+    // println!("{}", name);
 
     // let y = x + 23;
     // X = 23;
-    name = "Jane";
-    println!("{}", name);
-    println!(" ------ {}", X);
+    // name = "Jane";
+    // println!("{}", name);
+    // println!(" ------ {}", X);
 
     // shadowing();
     let name = String::from("martin");
@@ -30,9 +30,9 @@ fn main() {
 
     // conditionals();
 
-    school_conditionals();
-    loops();
-    while_loop();
+    // school_conditionals();
+    // loops();
+    // while_loop();
 }
 
 fn user_name(name: String) {
