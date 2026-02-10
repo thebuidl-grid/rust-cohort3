@@ -1,3 +1,5 @@
+mod xoulomon_calculator;
+
 const X: u32 = 5;
 
 fn shadowing() {
@@ -33,6 +35,8 @@ fn main() {
     school_conditionals();
     loops();
     while_loop();
+
+    xoulomon_calculator::run();
 }
 
 fn user_name(name: String) {
