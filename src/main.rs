@@ -1,17 +1,19 @@
+// mod xoulomon_calculator;
+mod wallet;
+
 mod grouping;
 
 use grouping::group;
 const X: u32 = 5;
 
 fn shadowing() {
-    let x = 5;
+    let _x = 5;
     let x = 5 + 4;
     let x = x * 3;
     println!("{}", x);
 }
 
 fn main() {
-    group();
     // let mut name = "John";
     // println!("Hello, world! {}", X);
     // println!("{}", name);
@@ -23,7 +25,7 @@ fn main() {
     // println!(" ------ {}", X);
 
     // // shadowing();
-    // let name = String::from("martin");
+    // let _name = String::from("martin");
     // // user_name(name);
     // // user_name("Chris".to_string());
     // // user_name("Emma".to_string());
@@ -37,6 +39,10 @@ fn main() {
     // school_conditionals();
     // loops();
     // while_loop();
+
+    // xoulomon_calculator::run();
+    wallet::run();
+    group();
 }
 
 fn user_name(name: String) {
