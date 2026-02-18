@@ -1,6 +1,9 @@
 // mod xoulomon_calculator;
 mod wallet;
 
+mod grouping;
+
+use grouping::group;
 const X: u32 = 5;
 
 fn shadowing() {
@@ -39,6 +42,7 @@ fn main() {
 
     // xoulomon_calculator::run();
     wallet::run();
+    group();
 }
 
 fn user_name(name: String) {
@@ -61,7 +65,10 @@ fn sub(a: u32, b: u32) -> u32 {
 }
 
 fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
-    println!("My user name is {}, \n age is {}, \n email is {}, \n is_active is {}", name, age, email, is_active);
+    println!(
+        "My user name is {}, \n age is {}, \n email is {}, \n is_active is {}",
+        name, age, email, is_active
+    );
     return name.to_string();
 }
 
@@ -78,7 +85,6 @@ fn conditionals() {
 }
 
 fn school_conditionals() {
-
     let time: u32 = 19;
 
     if time < 8 {
