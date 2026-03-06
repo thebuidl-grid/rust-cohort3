@@ -82,35 +82,12 @@ fn main() {
     // user_name("Chris".to_string());
     // user_name("Emma".to_string());
 
-    // sub(20, 10);
-
-    // user("Mark", 23, "mark@gmail.co".to_string(), true);
-
-    // conditionals();
-
-    school_conditionals();
-    loops();
-    while_loop();
-}
-
-fn user_name(name: String) {
-    println!("My user name is {}", name)
-}
-
-fn add(a: u32, b: u32) -> u32 {
-    let sum = a + b;
-
-    println!("The sum of {a} and {b} is {sum}");
-    return sum;
-}
-
-fn sub(a: u32, b: u32) -> u32 {
-    let sum = a - b;
-    add(a, b);
-
-    println!("The sum of {a} and {b} is {sum}");
-    return sum;
-}
+// fn shadowing() {
+//     let x = 5;
+//     let x = 5 + 4;
+//     let x = x * 3;
+//     println!("{}", x);
+// }
 
 fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
     println!(
@@ -155,23 +132,43 @@ fn school_conditionals() {
 fn loops() {
     let mut count = 0;
 
-    let result = loop {
-        count += 1;
-
-        if count == 10 {
-            break count * 2;
-        }
-        println!("Infinite loop {}", count);
+    let foodcart2 = FoodType {
+        name: String::from("beans"),
+        price: 2000,
+        is_vegan: true,
+        category: categories1::beans,
+        expiration: SystemTime::now() + std::time::Duration::from_secs(60 * 60 * 24), // Expires in 1 day
     };
 
-    println!("The result is {:?}", result);
-}
+    let foodcart3 = FoodType {
+        name: String::from("snacks"),
+        price: 2000,
+        is_vegan: false,
+        category: categories1::snacks,
+        expiration: SystemTime::now() + std::time::Duration::from_secs(60 * 60 * 24), // Expires in 1 day
+    };
 
-fn while_loop() {
-    let mut count = 6;
+    let foodcart4 = FoodType {
+        name: String::from("coke"),
+        price: 2000,
+        is_vegan: true,
+        category: categories1::drinks,
+        expiration: SystemTime::now() + std::time::Duration::from_secs(60 * 60 * 24), // Expires in 1 day
+    };
 
-    while count != 0 {
-        println!("The count is {}", count);
-        count -= 1;
+    let foodcart5 = FoodType {
+        name: String::from("amala"),
+        price: 2000,
+        is_vegan: false,
+        category: categories1::swallow,
+        expiration: SystemTime::now() + std::time::Duration::from_secs(60 * 60 * 24), // Expires in 1 day
+    };
+
+    let foods_list: Vec<FoodType> = vec![foodcart1, foodcart2, foodcart3, foodcart4, foodcart5];
+    //let food_category: Vec<categories1> = foods_list.into_iter().map(|food| food.category).collect();
+    //println!("categories: {:?}", food_category);
+    match food_reg::expiration(foods_list) {
+        Ok(_) => println!("All food items are fresh!"),
+        Err(e) => println!("Error: {}", e),
     }
 }
