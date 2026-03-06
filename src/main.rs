@@ -2,8 +2,10 @@ mod grouping;
 mod Assignments;
 mod error_handling;
 mod file_system;
+mod food_registry;
 use file_system::main as file_system;
 use error_handling::error;
+use food_registry::{Food, FoodRegistry, FoodType};
 
 use grouping::group;
 const X: u32 = 5;
@@ -23,6 +25,7 @@ enum Option{
 
 
 fn main() {
+    run_food_registry();
     file_system();
     error();
     let sample = Option::None;
@@ -173,5 +176,46 @@ fn while_loop() {
     while count != 0 {
         println!("The count is {}", count);
         count -= 1;
+    }
+}
+
+fn run_food_registry() {
+    let mut registry = FoodRegistry::new();
+
+    // Create food items
+    let snack = Food {
+        name: String::from("Chin Chin"),
+        price: 500,
+        calories: 200,
+    };
+
+    let swallow = Food {
+        name: String::from("Pounded Yam"),
+        price: 1500,
+        calories: 600,
+    };
+
+    let rice = Food {
+        name: String::from("Jollof Rice"),
+        price: 1200,
+        calories: 550,
+    };
+
+    let beans = Food {
+        name: String::from("Beans Porridge"),
+        price: 800,
+        calories: 450,
+    };
+
+    // Add foods
+    registry.add_food(FoodType::Snack, snack).unwrap();
+    registry.add_food(FoodType::Swallow, swallow).unwrap();
+    registry.add_food(FoodType::Rice, rice).unwrap();
+    registry.add_food(FoodType::Beans, beans).unwrap();
+
+    // Fetch a food
+    match registry.get_food(&FoodType::Rice) {
+        Ok(food) => println!("Found food: {:?}", food),
+        Err(e) => println!("Error: {:?}", e),
     }
 }
