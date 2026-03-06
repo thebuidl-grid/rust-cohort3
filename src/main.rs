@@ -8,11 +8,8 @@ use error_handling::error;
 use grouping::group;
 const X: u32 = 5;
 
-fn shadowing() {
-    let x = 5;
-    let x = 5 + 4;
-    let x = x * 3;
-    println!("{}", x);
+fn main(){
+    cal();
 }
 
 #[derive(Debug)]
