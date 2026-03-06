@@ -1,3 +1,11 @@
+mod grouping;
+mod Assignments;
+mod error_handling;
+mod file_system;
+use file_system::main as file_system;
+use error_handling::error;
+
+use grouping::group;
 const X: u32 = 5;
 
 fn shadowing() {
@@ -7,7 +15,57 @@ fn shadowing() {
     println!("{}", x);
 }
 
+#[derive(Debug)]
+enum Option{
+    None,
+    Some(String)
+}
+
+
 fn main() {
+    file_system();
+    error();
+    let sample = Option::None;
+    match sample {
+        Option::Some(x) =>{
+            println!("1 a value exist and it {}", x);
+        }
+        Option::None => {
+            println!("1 no value ");
+        }
+    }
+    let sample = Option::Some("hello".to_string());
+    match sample {
+        Option::Some(x) =>{
+            println!("2 a value exist and it {}", x);
+        }
+        Option::None => {
+            println!("2 no value ");
+        }
+    }
+
+    let sample = Some(9);
+    match sample {
+        Some(x) =>{
+            println!("2 a value exist and it {}", x);
+        }
+        _ => {
+            println!("2 no value ");
+        }
+    }
+
+    let result:Result<&str, String> = Ok("hello");
+
+    match result {
+        Ok(x)=>{
+            println!("result value {}",x);
+        }
+        Err(error)=>{
+            println!("error {}",error);
+        }
+
+    }
+    group();
     let mut name = "John";
     println!("Hello, world! {}", X);
     println!("{}", name);
@@ -55,7 +113,10 @@ fn sub(a: u32, b: u32) -> u32 {
 }
 
 fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
-    println!("My user name is {}, \n age is {}, \n email is {}, \n is_active is {}", name, age, email, is_active);
+    println!(
+        "My user name is {}, \n age is {}, \n email is {}, \n is_active is {}",
+        name, age, email, is_active
+    );
     return name.to_string();
 }
 
@@ -72,7 +133,6 @@ fn conditionals() {
 }
 
 fn school_conditionals() {
-
     let time: u32 = 19;
 
     if time < 8 {
