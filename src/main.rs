@@ -7,7 +7,16 @@ use error_handling::error;
 
 use grouping::group;
 const X: u32 = 5;
+// use std::clone;
 
+// const X: u32 = 5;
+
+// fn shadowing() {
+//     let x = 5;
+//     let x = 5 + 4;
+//     let x = x * 3;
+//     println!("{}", x);
+// }
 fn shadowing() {
     let x = 5;
     let x = 5 + 4;
@@ -69,48 +78,62 @@ fn main() {
     let mut name = "John";
     println!("Hello, world! {}", X);
     println!("{}", name);
-
-    // let y = x + 23;
-    // X = 23;
+    
     name = "Jane";
     println!("{}", name);
     println!(" ------ {}", X);
 
-    // shadowing();
-    let name = String::from("martin");
-    // user_name(name);
-    // user_name("Chris".to_string());
-    // user_name("Emma".to_string());
-
-    // sub(20, 10);
-
-    // user("Mark", 23, "mark@gmail.co".to_string(), true);
-
-    // conditionals();
-
+    shadowing();
     school_conditionals();
     loops();
     while_loop();
 }
+// fn main() {
+//     let mut name = "John";
+//     println!("Hello, world! {}", X);
+//     println!("{}", name);
 
-fn user_name(name: String) {
-    println!("My user name is {}", name)
-}
+//     // let y = x + 23;
+//     // X = 23;
+//     name = "Jane";
+//     println!("{}", name);
+//     println!(" ------ {}", X);
 
-fn add(a: u32, b: u32) -> u32 {
-    let sum = a + b;
+//     // shadowing();
+//     let name = String::from("martin");
+//     // user_name(name);
+//     // user_name("Chris".to_string());
+//     // user_name("Emma".to_string());
 
-    println!("The sum of {a} and {b} is {sum}");
-    return sum;
-}
+//     // sub(20, 10);
 
-fn sub(a: u32, b: u32) -> u32 {
-    let sum = a - b;
-    add(a, b);
+//     // user("Mark", 23, "mark@gmail.co".to_string(), true);
 
-    println!("The sum of {a} and {b} is {sum}");
-    return sum;
-}
+//     // conditionals();
+
+//     school_conditionals();
+//     loops();
+//     while_loop();
+// }
+
+// fn user_name(name: String) {
+//     println!("My user name is {}", name)
+// }
+
+// fn add(a: u32, b: u32) -> u32 {
+//     let sum = a + b;
+
+//     println!("The sum of {a} and {b} is {sum}");
+//     return sum;
+// }
+
+// fn sub(a: u32, b: u32) -> u32 {
+//     let sum = a - b;
+//     add(a, b);
+
+//     println!("The sum of {a} and {b} is {sum}");
+//     return sum;
+// }
 
 fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
     println!(
@@ -120,17 +143,17 @@ fn user(name: &str, age: u32, email: String, is_active: bool) -> String {
     return name.to_string();
 }
 
-fn conditionals() {
-    let age = 20;
+// fn conditionals() {
+//     let age = 20;
 
-    if age > 18 {
-        println!("You are an adult");
-    } else if age == 18 {
-        println!("You just became an adult")
-    } else {
-        println!("you are a minor")
-    }
-}
+//     if age > 18 {
+//         println!("You are an adult");
+//     } else if age == 18 {
+//         println!("You just became an adult")
+//     } else {
+//         println!("you are a minor")
+//     }
+// }
 
 fn school_conditionals() {
     let time: u32 = 19;
