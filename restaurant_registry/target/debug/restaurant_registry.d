@@ -1,0 +1,1 @@
+/home/christopher/Documents/rust_assingments/rust-cohort3/restaurant_registry/target/debug/restaurant_registry: /home/christopher/Documents/rust_assingments/rust-cohort3/restaurant_registry/src/main.rs
